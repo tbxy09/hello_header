@@ -1,5 +1,5 @@
 # Brief Introduction
-[xy_toc.png](https://oneyardline.cn/img/xy_toc.png)
+![xy_toc.png](https://oneyardline.cn/img/xy_toc.png)
 A task management using header from daily markdown diary
 针对你的工作笔记主题的autocompletion,有些主题会跨越好几个工作日，每个工作日的md diary，可以延续之前的主题建立header
 
@@ -18,7 +18,7 @@ there already some print lines in your existing plugin code
 
 # the base project
 
-[webcomplete.vim](https://github.com/thalesmello/webcomplete.vim)
+![webcomplete.vim](https://github.com/thalesmello/webcomplete.vim)
 
 # TODO
 

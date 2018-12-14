@@ -1,14 +1,14 @@
-let s:script = expand('<sfile>:h:h') . "/sh/webcomplete"
+let s:script = expand('<sfile>:h:h') . "/sh/cattocwords"
 
-function! webcomplete#complete(findstart, base)
+function! helloheader#complete(findstart, base)
   if a:findstart
-    return webcomplete#findstart()
+    return helloheader#findstart()
   else
-    return webcomplete#completions(a:base)
+    return helloheader#completions(a:base)
   endif
 endfunction
 
-function! webcomplete#findstart()
+function! helloheader#findstart()
   let line = getline('.')
   let start = col('.') - 1
 
@@ -19,7 +19,7 @@ function! webcomplete#findstart()
   return start
 endfunction
 
-function! webcomplete#completions(base)
+function! helloheader#completions(base)
   let command  =  'sh ' . shellescape(s:script)
   let command .= '| grep ' . shellescape(a:base)
 

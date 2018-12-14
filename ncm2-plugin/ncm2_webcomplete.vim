@@ -1,1 +1,1 @@
-call ncm2_webcomplete#init()
+call ncm2_helloheader#init()

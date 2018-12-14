@@ -16,7 +16,7 @@ logger = getLogger(__name__)
 def log(msg):
     from datetime import datetime
     timestamp = datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S,%f")
-    with open('/tmp/ncm2-webcomplete.log', 'a') as file_:
+    with open('/tmp/ncm2-helloheader.log', 'a') as file_:
         file_.write('%s %s\n' % (timestamp, msg))
 
 
@@ -26,7 +26,7 @@ class Source(Ncm2Source):
 
         filedir = dirname(abspath(__file__))
         projectdir = abspath(join(filedir, pardir))
-        self.__script = self.nvim.eval('g:ncm2_webcomplete_script')
+        self.__script = self.nvim.eval('g:ncm2_helloheader_script')
         self.__script = expanduser(expandvars(self.__script))
 
     def on_complete(self, ctx):

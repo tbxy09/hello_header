@@ -17,7 +17,7 @@ class Source(Base):
         self.__last_input = None
         self.__cache = None
 
-        self.name = 'webcomplete'
+        self.name = 'helloheader'
         self.kind = 'keyword'
         self.mark = '[toc]'
         self.rank = 4
@@ -32,7 +32,7 @@ class Source(Base):
         vars = context['vars']
 
         self.__script = expandvars(expanduser(
-            vars.get('deoplete#sources#webcomplete#script', self.__script)))
+            vars.get('deoplete#sources#helloheader#script', self.__script)))
 
     def background_thread(self):
         while True:
