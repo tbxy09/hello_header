@@ -18,7 +18,7 @@ there already some print lines in your existing plugin code
 
 # the base project
 
-![webcomplete.vim](https://github.com/thalesmello/webcomplete.vim)
+[webcomplete.vim](https://github.com/thalesmello/webcomplete.vim)
 
 # TODO
 
@@ -27,6 +27,6 @@ there already some print lines in your existing plugin code
 # post-editting
 
 reorganize several topic under a similar task and aggregate into one page markdown with several levels header
-[xy_toc_docker_example.png](https://oneyardline.cn/img/xy_toc_docker_example.png)
+![xy_toc_docker_example.png](https://oneyardline.cn/img/xy_toc_docker_example.png)
 
 
