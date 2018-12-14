@@ -1,79 +1,32 @@
-# webcomplete.vim
-
-A Vim plugin that completes words from the currently open web page in your
-browser.
-
-Currently only works on Mac OS and Chrome. There is a [fork that works with Firefox](https://github.com/kimat/webcomplete.vim).
-
-![demo](./demo.gif)
+# Brief Introduction
+[xy_toc.png](https://oneyardline.cn/img/xy_toc.png)
+A task management using header from daily markdown diary
+针对你的工作笔记主题的autocompletion,有些主题会跨越好几个工作日，每个工作日的md diary，可以延续之前的主题建立header
 
 # Installation
 
-With [vim-plug](https://github.com/junegunn/vim-plug):
-
 ```
-Plug 'thalesmello/webcomplete.vim'
+Plug 'tbxy09/hello_header'
 ```
 
-## Using with deoplete
+## deoplete#sources
 
-[`deoplete`](https://github.com/Shougo/deoplete.nvim/) is an awesome asynchronous
-completion engine for Neovim. `webcomplete` works with `deoplete` out of the box.
-Just start typing to see suggestions of words comming from your browser.
+[`deoplete`](https://github.com/Shougo/deoplete.nvim/) deoplete give out a async API for matching any source lines while editing, but
+'print' in the async thread while debugg will cause a thread exception error if
+there already some print lines in your existing plugin code
 
-- `g:deoplete#sources#webcomplete#script`: Execute this command-line string
-  to get a list of words instead of default internal `sh/webcomplete`. You may
-  add arguments to the string, e.g. `cat /tmp/words.txt`.
 
-## Using with ncm2
+# the base project
 
-[`ncm2`](https://github.com/ncm2/ncm2/) is also supported. Once `ncm2` is configured
-in your configuration files, the completions for webcomplete should be enabled by
-default.
+[webcomplete.vim](https://github.com/thalesmello/webcomplete.vim)
 
-- `g:ncm2_webcomplete_script`: Same as option for deoplete, but for ncm2.
+# TODO
 
-## Using with `completefunc` or `omnifunc`
+会在下拉菜单中增加进度条，表示离deadline 的时间，quickfix,window中，dunp 出之前所有的详细细节
 
-Vim allows you to define a `completefunc` or an `omnifunc` to give you
-completions during insert mode. `webcomplete` provides you with a function that
-you can plug into these built in features.
+# post-editting
 
-To set it up, use either of the two lines below:
-```
-" Use <C-X><C-U> in insert mode to get completions
-set completefunc=webcomplete#complete
+reorganize several topic under a similar task and aggregate into one page markdown with several levels header
+[xy_toc_docker_example.png](https://oneyardline.cn/img/xy_toc_docker_example.png)
 
-" Use <C-X><C-O> in insert mode to get completions
-set omnifunc=webcomplete#complete
-```
 
-## Using with Google Chrome
-
-Currently this plugin only supports Google Chrome on Mac OS.
-
-To use it, you must enable "Allow JavaScript from Apple Events" in View >
-Developer submenu.
-
-## Using with Firefox
-
-Currently there is no official support for Firefox, but there is a
-[fork with Firefox support](https://github.com/kimat/webcomplete.vim)
-
-# Limitations
-
-* Currently works on Mac OS because of the `osascript` command line utility,
-  which is used to fetch text from the page
-* Assumes you have only one browser window opened. If there is more than one
-  window open, it picks the most recently used.
-* Currently works only on Chrome, but it's possible to use with other browsers.
-
-# Contributing
-
-If you would like to contribute to the project by supporting your browser or
-operating system, I would be happy to accept pull requests.
-
-# Inspiration
-
-The project was only possible with the [help of Reddit user 18252](https://www.reddit.com/r/commandline/comments/4j73um/any_way_of_getting_the_text_of_open_chrome_pages/d34ftzx)
-and by looking at [tmux-complete.vim](https://github.com/wellle/tmux-complete.vim) as reference when implementing this plugin.

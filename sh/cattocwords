@@ -1,0 +1,36 @@
+#!/bin/sh
+
+# osascript -l JavaScript "$(dirname "$0")/get-words" "google chrome"
+
+ref_len=$(cat /tmp/cache_len)
+# echo $ref_len
+# should add condition here
+len=$(ls -alt ~/vimwiki/diary|wc -l)
+dir=$(pwd)
+
+if [ $len -gt $ref_len ];then
+	# echo 'yes'
+	cd ~/vimwiki/diary
+	bash tohtml.sh>out 2<&1
+	# echo $dir
+	cd $dir
+	markdown_py -x toc ~/vimwiki/diary/all.md|string_filter > /tmp/toc_words
+	ref_len=$len
+fi
+f='./toc_words'
+
+if [ ! -f toc_words ];then
+	cd ~/vimwiki/diary
+	bash tohtml.sh>out 2<&1
+	# echo $dir
+	cd $dir
+	markdown_py -x toc ~/vimwiki/diary/all.md|string_filter >/tmp/toc_words
+	ref_len=$len
+fi
+
+# markdown_py -x toc ~/vimwiki/diary/all.md|string_filter > toc_words
+# ref_len=$len
+echo $ref_len > /tmp/cache_len
+# ref_len=$(cat /tmp/cache_len)
+# echo $ref_len
+cat /tmp/toc_words

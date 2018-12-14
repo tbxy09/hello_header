@@ -3,6 +3,7 @@ This plugin works with Neovim and Deoplete, allowing you to
 complete words from your Chrome instance in your editor.'''
 
 from os.path import dirname, abspath, join, pardir, expandvars, expanduser
+import subprocess
 from subprocess import check_output, PIPE
 from threading import Thread, Event
 
@@ -18,11 +19,11 @@ class Source(Base):
 
         self.name = 'webcomplete'
         self.kind = 'keyword'
-        self.mark = '[web]'
+        self.mark = '[toc]'
         self.rank = 4
         filedir = dirname(abspath(__file__))
         projectdir = abspath(join(filedir, pardir, pardir, pardir, pardir))
-        self.__script = join(projectdir, 'sh', 'webcomplete')
+        self.__script = join(projectdir, 'sh', 'cattocwords')
         self.__refresh = Event()
         self.__thread = Thread(target=self.background_thread, daemon=True)
         self.__thread.start()
@@ -37,8 +38,13 @@ class Source(Base):
         while True:
             self.__refresh.wait()
             self.__refresh.clear()
-            output = check_output(self.__script, shell=True)
+            try:
+                output = check_output(self.__script, shell=True)
+            except subprocess.CalledProcessError as e:
+                # TODO
+                pass
             candidates = output.decode('utf-8').splitlines()
+            # print('web',candidates)
             self.__cache = [{'word': word} for word in candidates]
 
     def gather_candidates(self, context):
